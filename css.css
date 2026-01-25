@@ -10,7 +10,7 @@ background-color: #ffffff;
 width: 800px;
 height:300px;
 text-align:center;
-vertical-align: middle;
+line-height: 300px;
 }
 #contents{
 font: 24px;
