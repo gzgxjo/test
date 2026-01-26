@@ -65,17 +65,11 @@
 <body>
     <h1>お気に入りリンク集</h1>
 
-    <div class="link-list">
-        <div class="link-card">
-            <a href="https://google.com" target="_blank">Google</a>
-            <p>検索エンジン</p>
-        </div>
-
         <div class="link-card">
             <a href="https://www.meti.go.jp/policy/mono_info_service/joho/conference/semicon_digital.html">経済産業省 半導体・デジタル産業戦略検討会議</a>
             <p>経済産業省 半導体・デジタル産業戦略検討会議</p>
         </div>
-
+<script> async function checkUpdate(rssUrl, elementId) { const api = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(rssUrl); const response = await fetch(api); const data = await response.json(); const latest = data.items[0].pubDate; // 最新記事の日時 document.getElementById(elementId).innerText = "最終更新: " + latest; } checkUpdate("https://www.meti.go.jp/rss/news.rdf", "meti-update"); </script>
         <div class="link-card">
             <a href="https://kumamoto-nct.ac.jp/k-semicon/materials/">独立行政法人国立高等専門学校機構 半導体人材育成事業</a>
             <p>独立行政法人国立高等専門学校機構 半導体人材育成事業</p>
