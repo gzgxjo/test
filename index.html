@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>お気に入りリンク集</title>
+
     <style>
         body {
             font-family: sans-serif;
@@ -11,70 +12,124 @@
             margin: 0;
             padding: 20px;
         }
+
         h1 {
             text-align: center;
             color: #333;
             margin-bottom: 20px;
         }
+
         .link-list {
             display: grid;
             grid-template-columns: 1fr;
             gap: 15px;
         }
-        /* カード型デザイン */
+
         .link-card {
             background: #fff;
             padding: 15px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
+
         .link-card a {
             text-decoration: none;
             color: #0078d4;
             font-size: 18px;
             font-weight: bold;
         }
+
         .link-card p {
             margin: 5px 0 0;
             color: #555;
             font-size: 14px;
         }
-        /* タブレット以上の画面では2列に */
+
         @media (min-width: 600px) {
             .link-list {
                 grid-template-columns: 1fr 1fr;
             }
         }
-        /* PCでは3列に */
+
         @media (min-width: 900px) {
             .link-list {
                 grid-template-columns: 1fr 1fr 1fr;
             }
         }
+
+        /* 入力フォーム */
+        .add-area {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #0078d4;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #005fa3;
+        }
     </style>
 </head>
+
 <body>
     <h1>お気に入りリンク集</h1>
-    <div class="link-list">
-        <div class="link-card">
-            <a href="https://www.meti.go.jp/policy/mono_info_service/joho/conference/semicon_digital.html">経済産業省 半導体・デジタル産業戦略検討会議</a>
-            <p>経済産業省 半導体・デジタル産業戦略検討会議</p>
-        </div>
-            
-        <div class="link-card">
-            <a href="https://kumamoto-nct.ac.jp/k-semicon/materials/">独立行政法人国立高等専門学校機構 半導体人材育成事業</a>
-            <p>独立行政法人国立高等専門学校機構 半導体人材育成事業</p>
-        </div>    
-    
-        <div class="link-card">
-        <h2>Xタイムライン</h2>
-        <a class="twitter-timeline" href="https://x.com/semi_journal_jp">
-            Tweets by semi journal
-        </a>
-        </div>
+
+    <!-- 入力フォーム -->
+    <div class="add-area">
+        <input id="titleInput" type="text" placeholder="サイト名">
+        <input id="urlInput" type="text" placeholder="URL">
+        <input id="descInput" type="text" placeholder="説明（任意）">
+        <button onclick="addLink()">リンクを追加</button>
     </div>
 
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <!-- リンクカード一覧 -->
+    <div class="link-list" id="linkList"></div>
+
+    <script>
+        function addLink() {
+            const title = document.getElementById("titleInput").value;
+            const url = document.getElementById("urlInput").value;
+            const desc = document.getElementById("descInput").value;
+
+            if (!title || !url) {
+                alert("サイト名とURLは必須です");
+                return;
+            }
+
+            const list = document.getElementById("linkList");
+
+            const card = document.createElement("div");
+            card.className = "link-card";
+
+            card.innerHTML = `
+                <a href="${url}" target="_blank">${title}</a>
+                <p>${desc}</p>
+            `;
+
+            list.appendChild(card);
+
+            // 入力欄をクリア
+            document.getElementById("titleInput").value = "";
+            document.getElementById("urlInput").value = "";
+            document.getElementById("descInput").value = "";
+        }
+    </script>
 
 </body>
 </html>
