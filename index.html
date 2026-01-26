@@ -56,79 +56,37 @@
                 grid-template-columns: 1fr 1fr 1fr;
             }
         }
-
-        /* 入力フォーム */
-        .add-area {
-            margin-bottom: 20px;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-        }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            background: #0078d4;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #005fa3;
-        }
     </style>
 </head>
 
 <body>
     <h1>お気に入りリンク集</h1>
 
-    <!-- 入力フォーム -->
-    <div class="add-area">
-        <input id="titleInput" type="text" placeholder="サイト名">
-        <input id="urlInput" type="text" placeholder="URL">
-        <input id="descInput" type="text" placeholder="説明（任意）">
-        <button onclick="addLink()">リンクを追加</button>
-    </div>
-
-    <!-- リンクカード一覧 -->
     <div class="link-list" id="linkList"></div>
 
     <script>
-        function addLink() {
-            const title = document.getElementById("titleInput").value;
-            const url = document.getElementById("urlInput").value;
-            const desc = document.getElementById("descInput").value;
+        async function loadLinks() {
+            const url = "https://raw.githubusercontent.com/あなたのユーザー名/あなたのリポジトリ名/main/links.json";
 
-            if (!title || !url) {
-                alert("サイト名とURLは必須です");
-                return;
-            }
+            const response = await fetch(url);
+            const data = await response.json();
 
             const list = document.getElementById("linkList");
 
-            const card = document.createElement("div");
-            card.className = "link-card";
+            data.links.forEach(link => {
+                const card = document.createElement("div");
+                card.className = "link-card";
 
-            card.innerHTML = `
-                <a href="${url}" target="_blank">${title}</a>
-                <p>${desc}</p>
-            `;
+                card.innerHTML = `
+                    <a href="${link.url}" target="_blank">${link.title}</a>
+                    <p>${link.desc}</p>
+                `;
 
-            list.appendChild(card);
-
-            // 入力欄をクリア
-            document.getElementById("titleInput").value = "";
-            document.getElementById("urlInput").value = "";
-            document.getElementById("descInput").value = "";
+                list.appendChild(card);
+            });
         }
+
+        loadLinks();
     </script>
 
 </body>
