@@ -34,6 +34,30 @@
       "title": "半導体業界研究サイト",
       "url": "https://www.semijapanwfd.org/",
       "desc": "SEMI FREAKS"
+    },
+
+    {
+      "title": "EDN Japan",
+      "url": "https://edn.itmedia.co.jp/edn/spv/",
+      "desc": "IT media"
+    },
+
+    {
+      "title": "新人エンジニアの赤面ブログ",
+      "url": "https://www.macnica.co.jp/business/semiconductor/articles/query/?kw=%E6%96%B0%E4%BA%BA%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%81%AE%E8%B5%A4%E9%9D%A2%E3%83%96%E3%83%AD%E3%82%B0",
+      "desc": "macnica"
+    },
+
+    {
+      "title": "エンジニアコミュニティ",
+      "url": "https://www.rs-online.com/designspark/home-jp",
+      "desc": "RS DesignSpark"
+    },
+
+    {
+      "title": "",
+      "url": "",
+      "desc": ""
     }
   ]
 }
